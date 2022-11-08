@@ -7,7 +7,7 @@ export default function List() {
     return <div>
         <p>正在进行</p>
         {list.map((item, index) => {
-            if (item.finish) return
+            if (item.finish) return null
             return <div key={item.name}>
                 <span onClick={() => dispatch(toggleFinish({ index }))}>切换状态</span>
                 <span>{item.name}</span>
@@ -16,7 +16,7 @@ export default function List() {
         })}
         <p>已经完成</p>
         {list.map((item, index) => {
-            if (!item.finish) return
+            if (!item.finish) return null
             return <div key={item.name}>
                 <span onClick={() => dispatch(toggleFinish({ index }))}>切换状态</span>
                 <span>{item.name}</span>

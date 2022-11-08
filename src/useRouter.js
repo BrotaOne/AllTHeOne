@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function useRouter() {
     const [path, setPath] = useState(window.location.href);
@@ -11,7 +11,7 @@ function useRouter() {
         window.addEventListener('hashchange', listenUrlChange)
 
         const overWriteStateChangeFn = ['pushState', 'replaceState']
-        overWriteStateChangeFn.map(key => {
+        overWriteStateChangeFn.forEach(key => {
             const oldFn = window.history[key]
             window.history[key] = (...props) => {
                 const ret = oldFn.apply(this, props)
